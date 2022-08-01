@@ -29,6 +29,36 @@ public class ConstructorIsimDegistirme {
      * variable'dir
      */
 
+    public static void main(String[] args) {
+        String ogrenciIsim="Ali";
+        String ogrenciSoyIsim="Can";
+        String ogrenciTel ="123456789";
+
+        System.out.println("isim :" +ogrenciIsim +" soyisim :" +ogrenciSoyIsim +" tel :"+ ogrenciTel);
+        //isim :Ali soyisim :Can tel :123456789
+        isimDegistir(ogrenciIsim,ogrenciSoyIsim,ogrenciTel); //isim :Mehmet soyisim :Bulut tel :4569871263
+
+        //soyIsimDegistir(ogrenciSoyIsim); //ilk methodu create ederken bu satiri kullandik..
+        ogrenciSoyIsim=soyIsimDegistir(ogrenciSoyIsim);
+        System.out.println("isim :"+ogrenciIsim + " yeniSoyisim :" +ogrenciSoyIsim + " tel: " +ogrenciTel);
+        //isim :Ali yeniSoyisim :Guzel tel: 123456789
+
+    }
+
+    private static String soyIsimDegistir(String ogrenciSoyIsim) {
+        Scanner scan =new Scanner(System.in);
+        System.out.print("Yeni soyisiminizi giriniz :");
+        String yeniSoyisim = scan.nextLine();
+        return  yeniSoyisim;
+    }
+
+    public static void isimDegistir(String ogrenciIsim, String ogrenciSoyIsim, String ogrenciTel) {
+        ogrenciIsim ="Mehmet";
+        ogrenciSoyIsim ="Bulut";
+        ogrenciTel="4569871263";
+
+        System.out.println("isim :" +ogrenciIsim +" soyisim :" +ogrenciSoyIsim +" tel :"+ ogrenciTel);
+    }
 
 
 
