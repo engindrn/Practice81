@@ -108,8 +108,9 @@ public class Islemler {
     private static void ekle() {//bu method hem ogrenci hem de ogretmen eklemek icin tasarlandi
         System.out.println("**** "+ kisiTuru+" ekleme sayfasina hosgeldin");
         System.out.println("isim soyisim gir");
-        String adSoyad=scan.nextLine();
         scan.nextLine();
+        String adSoyad=scan.nextLine();
+
         System.out.println("kimlik gir");
         String kimliNo=scan.nextLine();
 
@@ -119,10 +120,10 @@ public class Islemler {
         if (kisiTuru.equals("OGRENCI")){//TODO sonra doldur
 
 
-        }else{
+        }else{//cozum berk karanfil bey den
+            scan.nextLine();//dummy6 kod hata almamak icin//
             System.out.println("bolum gir");
             String bolum= scan.nextLine();
-            scan.nextLine();//dummy6 kod hata almamak icin
             System.out.println("sicil no gir");
             String sicilNo= scan.nextLine();
 

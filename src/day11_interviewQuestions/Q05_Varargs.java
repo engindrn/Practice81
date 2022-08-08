@@ -1,6 +1,6 @@
 package day11_interviewQuestions;
 
-public class Q05 {
+public class Q05_Varargs {
     public static void main(String[] args) {
 //nrmal toplmama methodu varargs ile toplama methodu yaziniz
 
