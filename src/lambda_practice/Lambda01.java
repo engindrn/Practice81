@@ -11,6 +11,8 @@ public class Lambda01 {//okul projesinde listele vb lamda expression ile yapiniz
 
     static List<Integer> numbers=new ArrayList<>(Arrays.asList(25,65,-56,55,98,-89,65,55,21,-54,9,35,35,34));
 
+    static List<String> menu = new ArrayList<>(Arrays.asList("kusleme", "adana", "trilice", "havucdilim", "buryan",
+            "kokorec", "kuzutandir", "guvec"));
 
     /* TASK :
 
@@ -83,10 +85,13 @@ public class Lambda01 {//okul projesinde listele vb lamda expression ile yapiniz
                 .reduce(Math::multiplyExact));
     }
 
-//task tek lerin karesini buyukten kucuge
+    //TODO task tek sayilarin  karesini buyukten kucuge
     public static void teklerinKareBuyuktenKucuge(List<Integer> sayi) {
-
-
+        sayi.stream().//liste aaskisa alindi
+                filter(t-> t % 2 ==1)//tek olan rakamlari filtreeledim
+                .map(t-> t*t)//her tek sayinin  karesi alindi
+                .sorted(Comparator.reverseOrder())//buyukten kucuge srialandi
+                .forEach(Methodlarim::yazdir);//seed method kullanilarakl method ref ile yazdirldi
 
     }
     // Task : List elemanlarini alafabetik buyuk harf ve  tekrarsiz print ediniz.
@@ -99,10 +104,14 @@ public class Lambda01 {//okul projesinde listele vb lamda expression ile yapiniz
 
     }
 
-    // Task : list elemanlarinin son harfine gore ters sirali print ediniz.
-    public static void sonHarfeGoreTersSira(List<String> yemek) {
-
-
+    // Task :TODO list elemanlarinin son harfine gore ters sirali print ediniz.
+    public static void sonHarfeGoreTersSira(List<String> yemek) {//yukarida tanimladigim listlerden calisiacam
+        yemek.stream().//
+                sorted(Comparator//siralama aksiyonuna girildi
+                        .comparing(t-> t.toString()//her bir eleman strige cevrildi elemanin kendisi alindi
+                                .charAt(t.toString().length()-1))//son karakter i charAt ile alindi
+                        .reversed())////son harfe gore tersine sirlandi
+                .forEach(Methodlarim::yazdir);//yazdirldi
     }
 
     // Task : listin elemanlarin karakterlerinin cift sayili  karelerini hesaplayan,ve karelerini tekrarsiz
@@ -112,8 +121,19 @@ public class Lambda01 {//okul projesinde listele vb lamda expression ile yapiniz
 
     }
 
-    // Task : List elelmmalarinin karakter sayisini 7 ve 7 'den az olma durumunu kontrol ediniz.
+    // TODO Task : List elelmmalarinin karakter sayisini 7 ve 7 'den az olma durumunu kontrol ediniz.
     public static void karakterSayiYedidenBuyuk(List<String> yemek) {
+        //ilkel yontem ile
+        boolean kontrol =yemek.stream().allMatch(t-> t.length()<=7);//true gelirse if caliscak
+        if (kontrol){
+            System.out.println("list elemanlari 7 ve daha az harften olusmus");
+        }else System.out.println("bazi elemanlar 7 den buyuk");
+
+        //modern yazzim java 8 in faydalari
+        System.out.println(yemek.stream()//akisa alindi
+                .allMatch(t -> t.length() <= 7) ?//7 den kucuk olma durumu kontrol eildi tearnary ile sart a bakildi
+                "list elemanlari 7 ve daha az harften olusmus" ://true ise mesaj donderildi
+                "bazi elemanlar 7 den buyuk");//false ise mesaj donderildi
 
 
     }
@@ -128,16 +148,26 @@ public class Lambda01 {//okul projesinde listele vb lamda expression ile yapiniz
 
 
     }
-    // Task : List elelmanlarinin "x" ile biten en az bir elemaı kontrol ediniz.
+    // TODO Task : List elelmanlarinin "x" ile biten en az bir elemaı kontrol ediniz.
     public static void xIleBitenEleman(List<String> yemek) {
+
 
     }
 
-    // Task : Karakter sayisi en buyuk elemani yazdiriniz.
+    // TODO Task : Karakter sayisi en buyuk elemani yazdiriniz.
     public static void karkterEnFazla(List<String> yemek) {
         //limit(1) => Sınırlandırma demek. Bu akışın elemanlarından oluşan, uzunluğu maxSize'dan uzun olmayacak
        // şekilde kesilmiş bir akış return eder. Stream return eder.
+        Stream<String> sonIsim=//limit kullandigimiz icin bu sonucu sonIsim objesine atadik
+                yemek.stream().//akisa alindi
+                        sorted(Comparator.//sortladik
+                                comparing(t-> t.toString().length()).//sortlamayi length ine gore yaptik
+                                reversed()).//tersine cevirdik yani karakter sayisi en cok olan en basa geldi
+                        limit(1);//limity ile ilk elemani aldik yani liteyi ilk eleman ile siniriladik
 
+        System.out.println(//sonIsim objesi data turu nedir -> Stream oldugu icin ben bunu arraya cevirmem gerekli
+                Arrays.toString//array olanlari stringe donusturup yazdirmamizi saglar
+                (sonIsim.toArray()));//Stream tipi arraya cevrildi
 
 
     }
@@ -149,7 +179,7 @@ kullanılabilir.
 
    */
 
-    // Task : list elemanlarini son harfine göre siralayıp ilk eleman hariç kalan elemanlari print ediniz.
+    //TODO Task : list elemanlarini son harfine göre siralayıp ilk eleman hariç kalan elemanlari print ediniz.
     public static void sonHarfeGoreSiralaIlkHaricElmanlariYaz(List<String> yemek) {
 
 
